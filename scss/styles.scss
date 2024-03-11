@@ -14,8 +14,31 @@ body {
     justify-content: space-between;
     width: 100%;
     padding: 30px 40px;
-    background-color: $background-color;
+    background-color: #3ebfff;
     box-sizing: border-box;
+}
+
+.headerOpenMenu {
+    @media (max-width: 1024px) {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 30px 40px;
+        background-color: #ffffff;
+        box-sizing: border-box;
+    }
+}
+
+.menuBurgerClose {    
+    @media (max-width: 1024px) {
+        width: 26px;
+        img {
+            width: 100%;
+        }
+    }
 }
 
 .toggleButton {
@@ -25,12 +48,37 @@ body {
 
 .menuBurger {
     display: none;
+
+    @media (max-width: 1024px) {
+        display: block;
+        cursor: pointer;
+    }
 }
 
 .mobileMenu {
     display: none;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #ffffff;
+        display: none;
+        z-index: 15;
+
+        &.openMenu {
+            display: block;
+        }
+
+        .navigation {
+            display: block;
+        }
+    }
 }
 
+/*Welcome*/
 
 .logo {
     height: 35px;
@@ -39,6 +87,13 @@ body {
 .navigation {
     margin-left: auto;
     margin-right: 45px;
+
+    @media (max-width: 1024px) {
+        margin: 0;
+        padding: 20px;
+        display: none;
+    }
+
 }
 
 .navList {
@@ -47,36 +102,43 @@ body {
     list-style: none;
     margin: 0;
     column-gap: 45px;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+        padding: 0;
+    }
 }
 
 .navListItem {
     cursor: pointer;
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 16px;
-    color: $color;
+    @include font(Barlow, 500, 16px, #ffffff);
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    @media (max-width: 1024px) {
+        font-weight: 600;
+        font-size: 32px;
+        color: #034b68;
+        padding: 20px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
 }
 
-.navListItem a{
-    text-decoration: none;
-    color: inherit;
-}
-
-#contact {
-    width: 150px;
-    height: 50px;
-    color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
-    font-weight: 700;
+.contactButton {
+    cursor: pointer;
+    padding: 15px 25px;
     border-radius: 25px;
-    background-color: white;
-}
+    border: none;
+    @include font(Fraunces, 700, 16px, #0d2149);
+    background: #fff;
 
-#contact_a {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+    @media (max-width: 1024px) {
+        display: none;
+    }
 }
 
 .firstScreenBackground {
@@ -98,21 +160,34 @@ body {
     height: 100vh;
     margin-top: -110px;
     padding-top: 110px;
+
+    @media (max-width: 1024px) {
+        max-height: 650px;
+    } 
+    
 } 
 
 .title {
-    font-family: $font;
-    font-weight: 900;
-    font-size: 112px;
-    color: $color;
+    @include font(Fraunces, 900, 112px, #ffffff);
     text-transform: uppercase;
     letter-spacing: 22px;
     margin-top: 170px;
     padding: 0 16px;
+
+    @media (max-width: 1024px) {
+        font-size: 44px;
+        text-align: center;
+        letter-spacing: 8px;
+        margin-top: 100px;
+    }
 }
 
 .arrowImage {
     height: 125px;
+
+    @media (max-width: 1024px) {
+        height: 120px;
+    }
 }
 
 /*About Us*/
@@ -120,6 +195,11 @@ body {
 .secondScreen {
     display: flex;
     align-items: stretch;
+
+    @media (max-width: 1024px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 
 .secondScreenTextContent {
@@ -128,60 +208,80 @@ body {
     justify-content: center;
     box-sizing: border-box;
     width: 50%;
-    background: #fffcf6;
+    background: $backgroundTextContentLight-color;
     padding: 200px; 
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }
 
 .secondScreenImageContent {
     width: 50%;
     object-fit: cover;
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+    }
 }
 
 .titleSecondScreen {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 56px;
-    color: #0d2149;
+    @include font(Fraunces, 700, 56px, #0d2149);
     margin: 0 0 20px 0;
+
+    @media (max-width: 1024px) {    
+        font-size: 34px;
+        text-align: center;
+    }
 }
 
 .textSecondScreen {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #848c9b;
-    line-height: 28px;
+    @include font-paragraph;
     margin: 0 0 30px 0;
+
+    @media (max-width: 1024px) {    
+        text-align: center;
+    }
+
 }
 
 .link {
     width: fit-content;
-    font-family: $font;
-    font-weight: 800;
-    font-size: 16px;
-    color: #0d2149;
+    @include font(Fraunces, 800, 16px, #0d2149);
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
     position: relative;
-}
 
-.link span {
-    position: relative;
-    z-index: 1;
-}
+    &:hover {
+        &:before {
+            left: -15px;
+            width: calc(100% + 30px);
+        }
+    }
 
-.link::before {
-    content: "";
-    position: absolute;
-    left: -5px;
-    bottom: -3px;
-    width: calc(100% + 10px);
-    height: 10px;
-    border-radius: 5px;
-    background: #fed700;
-    opacity: .3;
+    span {
+        position: relative;
+        z-index: 1;
+    }
 
+    &:before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        bottom: -3px;
+        width: calc(100% + 10px);
+        height: 10px;
+        border-radius: 5px;
+        background: #fed700;
+        opacity: .3;
+        transition: all $hoverTransitionTime;
+    }
 }
 
 .linkPink::before {
@@ -194,6 +294,11 @@ body {
     display: flex;
     flex-direction: row-reverse;
     align-items: stretch;
+
+    @media (max-width: 1024px) {    
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 
 .thirdScreenTextContent {
@@ -203,38 +308,59 @@ body {
     justify-content: center;
     box-sizing: border-box;
     width: 50%;
-    background: #fffcf6;
+    background: map-get ($colors, neutral);
     padding: 200px;  
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+        padding: 60px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .thirdScreenImageContent {
     width: 100%;
     object-fit: cover;
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+        height: 630px;
+    }
 }
 
 .titleThirdScreen {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 56px;
-    color: #0d2149;
+    @include font(Fraunces, 700, 56px, #0d2149);
     margin: 0 0 30px 0;
+
+    @media (max-width: 1024px) {    
+        font-size: 34px;
+        text-align: center;
+    }
 }
 
 .textThirdScreen {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #848c9b;
-    line-height: 28px;
+    @include font-paragraph;
     margin: 0 0 20px 0;
+
+    @media (max-width: 1024px) {    
+        text-align: center;
+    }
+
 }
 
-/*Services Positions*/
+
 
 .fourthScreen {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+
+    @media (max-width: 1024px) {    
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .firstSide {
@@ -243,6 +369,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+    }
 }
 
 .secondSide {
@@ -251,6 +381,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {    
+        width: 100%;
+    }
 }
 
 .firstSideTextContent {
@@ -261,6 +395,17 @@ body {
     z-index: 1;
     box-sizing: border-box;
     padding: 0 20px 120px;
+
+    @media (max-width: 1024px) {    
+        z-index: 1;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 415px;
+        padding: 0 50px 90px;
+        position: absolute;
+        bottom: 0px;
+    }
+
 }
 
 .secondSideTextContent {
@@ -271,56 +416,53 @@ body {
     z-index: 1;
     box-sizing: border-box;
     padding: 0 20px 120px;
+
+    @media (max-width: 1024px) {    
+        z-index: 1;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 415px;
+        padding: 0 50px 90px;
+        position: absolute;
+        bottom: 0px;
+    }
 }
 
-
-/*Services Styles*/
-
 .titleFirstFourthScreen {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 36px;
-    color: #19564a;
+    @include font(Fraunces, 700, 36px, #19564a);
     text-align: center;
     margin: 0 0 20px 0;
+
+    @media (max-width: 1024px) {    
+        font-size: 30px;
+    }
 }
 
 .textFirstFourthScreen {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #19564a;
+    @include font(Barlow, 500, 18px, #19564a);
     line-height: 28px;
     text-align: center;
     margin: 0;
 }
 
 .titleSecondFourthScreen {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 36px;
-    color: #034b68;
+    @include font(Fraunces, 700, 36px, #034b68);
     text-align: center;
     margin: 0 0 20px 0;
+
+    @media (max-width: 1024px) {    
+        font-size: 30px;
+    }
 }
 
 .textSecondFourthScreen {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #034b68;
+    @include font(Barlow, 500, 18px, #034b68);
     line-height: 28px;
     text-align: center;
     margin: 0;
 }
 
-/*Testimonials Position*/
 
-.titleFifthScreen {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 140px 0;
-}
 
 .reviews {
     display: flex;
@@ -328,6 +470,11 @@ body {
     align-items: stretch;
     justify-content: center;
     column-gap: 170px;
+
+    @media (max-width: 1024px) {    
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .reviewBody {
@@ -336,22 +483,34 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {    
+        margin-bottom: 60px;
+    }
 }
 
 .testimonials { 
     padding: 220px;
-    background: #fffbf8;
+    background: map-get($colors, secondary);
+
+    @media (max-width: 1024px) {    
+        padding: 100px 20px 100px 20px;
+    }
 }
 
-/*Testimonials Styles*/
-
 .titleFifthScreen {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 30px;
-    color: #a9a9a9;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 140px 0;
+    @include font(Fraunces, 700, 30px, #a9a9a9);
     text-transform: uppercase;
     letter-spacing: 8px;
+    
+    @media (max-width: 1024px) {    
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
 }
 
 .clientPortrait {
@@ -362,52 +521,62 @@ body {
 }
 
 .reviewText {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #4e4e4e;
+    @include font-paragraph;
     line-height: 28px;
     text-align: center;
     margin: 0 0 60px 0;
+
+    @media (max-width: 1024px) {    
+        margin: 0 0 20px;
+    }
+    
 }
 
 .clientName {
-    font-family: $font;
-    font-weight: 700;
-    font-size: 20px;
-    color: #0d2149;
+    @include font(Fraunces, 700, 20px, #0d2149);
     text-align: center;
     margin: 0 0 5px 0;
 }
 
 .clientPosition {
-    font-family: Barlow;
-    font-weight: 500;
-    font-size: 18px;
-    color: #686868;
+    @include font(Barlow, 500, 18px, #686868);
     line-height: 28px;
     text-align: center
 }
 
-/*Gallery Position*/
+/*Gallery*/
 
 .gallery {
     display: flex;
     flex-direction: row;
     max-width: 100%;
+
+    @media (max-width: 1024px) {    
+        flex-wrap: wrap;
+    }
 }
 
 .galleryImage {
     width: 25%;
+    @media (max-width: 1024px) {    
+        width: 50%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
 }
 
-/*Footer Position*/
+/*Footer*/
 
 .footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 120px;
+
+    @media (max-width: 1024px) {        
+        padding: 50px 20px 50 20px;
+    }
+
     }
 
 .footerNavList {
@@ -417,11 +586,15 @@ body {
     margin: 0;
     column-gap: 80px;
     padding: 0;
-}
 
-.footerNavListItem a{
-    text-decoration: none;
-    color: inherit;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    @media (max-width: 1024px) {        
+        column-gap: 15px;
+    }
 }
 
 .footerSocial {
@@ -433,10 +606,8 @@ body {
     padding: 30px;
 }
 
-/*Footer Style*/
-
 .footer {
-    background: #90d4c5;
+    background: map-get($colors, primary);
 }
 
 .footerLogo {
@@ -446,210 +617,6 @@ body {
 
 .footerNavListItem {
     cursor: pointer;
-    font-family: Barlow;
-    font-weight: 600;
-    font-size: 18px;
-    color: #2b7463;
+    @include font(Barlow, 600, 18px, #2b7463);
     padding: 30px;
 }   
-
-
-@media (max-width: 1024px) {
-    .title {
-        font-size: 44px;
-        text-align: center;
-        letter-spacing: 8px;
-        margin-top: 100px;
-    }
-
-    .arrowImage {
-        height: 120px;
-    }
-
-    .firstScreen {
-        max-height: 650px;
-    } 
-
-    .navigation {
-        display: none;
-    }
-
-    .contactButton {
-        display: none;
-    }
-
-    .menuBurger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .secondScreen {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    
-    .secondScreenImageContent {
-        width: 100%;
-    }
-
-    .titleSecondScreen {
-        font-size: 34px;
-        text-align: center;
-    }
-
-    .secondScreenTextContent {
-        width: 100%;
-        padding: 60px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .textSecondScreen {
-        text-align: center;
-    }
-
-    .thirdScreen {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .titleThirdScreen {
-        font-size: 34px;
-        text-align: center;
-    }
-
-    .thirdScreenTextContent {
-        width: 100%;
-        padding: 60px 40px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .thirdScreenImageContent {
-        width: 100%;
-        height: 630px;
-    }
-
-    .fourthScreen {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .firstSide, .secondSide {
-        width: 100%;
-    }
-
-    .titleFirstFourthScreen, .titleSecondFourthScreen {
-        font-size: 30px;
-    }
-
-    .firstSideTextContent, .secondSideTextContent {
-        z-index: 1;
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 415px;
-        padding: 0 50px 90px;
-        position: absolute;
-        bottom: 0px;
-    }
-
-    .testimonials {
-        padding: 100px 20px 100px 20px;
-    }
-
-    .titleFifthScreen {
-        font-size: 24px;
-        text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .reviews {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .reviewText {
-        margin: 0 0 20px;
-    }
-
-    .reviewBody {
-        margin-bottom: 60px;
-    }
-
-    .gallery {
-        flex-wrap: wrap;
-    }
-
-    .galleryImage {
-        width: 50%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-    }
-
-    .footer {
-        padding: 50px 20px 50 20px;
-    }
-
-    .footerNavList {    
-        column-gap: 15px;
-    }
-
-    .mobileMenu {
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: #ffffff;
-        display: none;
-        z-index: 15;
-    }
-
-    .mobileMenu.openMenu {
-        display: block;
-    }
-    
-
-    .mobileMenu .navigation {
-        display: block;
-    }
-    
-    .navigation {
-        margin: 0;
-        padding: $gap;
-    }
-
-    .navList {
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .navListItem {
-        color: #034b68;
-        font-size: 32px;
-        font-weight: 600;
-        padding: $gap;
-        text-transform: uppercase;
-        letter-spacing: 5px;
-    }
-
-    .headerOpenMenu {
-        position: relative;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 30px 40px;
-        background-color: #ffffff;
-        box-sizing: border-box;
-    }   
-
-    .menuBurgerClose {
-        width: 26px;
-    }
-
-}
-
